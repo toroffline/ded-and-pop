@@ -9,7 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: User;
+  users: User[];
+  loading = true;
   subscriptionUserList: Subscription;
 
   constructor(
@@ -19,6 +20,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptionUserList = this.userService.getUserList().subscribe(res => {
       this.users = res;
+      this.loading = false;
       console.log(this.users);
     });
   }
@@ -26,8 +28,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // tslint:disable-next-line:no-unused-expression
     this.subscriptionUserList && this.subscriptionUserList.unsubscribe();
-
   }
+
 
 
 

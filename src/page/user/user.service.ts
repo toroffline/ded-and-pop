@@ -12,8 +12,13 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  public getUserList(): Observable<User> {
+  public getUserList(): Observable<User[]> {
     const url = 'http://jsonplaceholder.typicode.com/users';
-    return this.http.get<User>(url);
+    return this.http.get<User[]>(url);
+  }
+
+  public getUserListById(id: number): Observable<User[]> {
+    const url = `http://jsonplaceholder.typicode.com/users?id=${id}`;
+    return this.http.get<User[]>(url);
   }
 }
