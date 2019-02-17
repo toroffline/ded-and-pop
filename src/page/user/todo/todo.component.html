@@ -1,3 +1,49 @@
-<p>
-  todo works!
-</p>
+<h2>HUM Todos</h2>
+<ul class="heroes">
+  <li *ngFor="let todo of todos">
+    <!-- <a routerLink="/detail/{{hero.id}}"> -->
+
+    <div *ngIf="selectedTodo;else other_content">
+      <div *ngIf="selectedTodo.id === todo.id;else other_content">
+        <input [(ngModel)]="selectedTodo.title" />
+        <button (click)='saveTitle()' class="w3-button w3-yellow">save</button>
+      </div>
+
+    </div>
+
+    <ng-template #other_content>
+
+      <span class="badge">{{todo.title}}</span>
+      <button (click)='editTitle(todo)' class="w3-button w3-yellow">Edit</button>
+    </ng-template>
+
+    <!-- </a> -->
+    <!-- <button class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
+  </li>
+</ul>
+
+<div class="w3-modal" [ngStyle]=styleModal>
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span (click)="closeModal()" class="w3-button w3-display-topright">&times;</span>
+      <h2>Edit</h2>
+      <div *ngIf="selectedTodo">
+        <input [(ngModel)]="selectedTodo.title" />
+        <button (click)='saveTitle()' class="w3-button w3-yellow">save</button></div>
+    </div>
+  </div>
+</div>
+<table class="w3-table-all">
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Complete</th>
+    <th>Operation</th>
+  </tr>
+  <tr *ngFor="let todo of todos">
+    <td>{{todo.id}}</td>
+    <td>{{todo.title}}</td>
+    <td>{{todo.completed}}</td>
+    <td><button (click)='editTitle(todo)' class="w3-button w3-yellow">Edit</button></td>
+  </tr>
+</table>
