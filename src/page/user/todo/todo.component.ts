@@ -3,8 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
+<<<<<<< HEAD
 import { Todo } from "../../../shared/model/todo";
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
+=======
+import { Todo } from '../../../shared/model/todo';
+>>>>>>> 414e816745e53f7b1e8e7666b2bcdcca6a92ef73
 // @ViewChild('myModal') myModal;
 
 @Component({
@@ -41,15 +45,18 @@ export class TodoComponent implements OnInit {
   editTitle(todo: Todo): void {
     // this.myModal.nativeElement.className = 'modal fade show';
     this.styleModal = { display: 'block' };
-    console.log({ todo })
+    console.log({ todo });
     this.selectedTodo = todo;
   }
 
   saveTitle(): void {
     console.log('Save success.');
     console.log(this.selectedTodo);
+<<<<<<< HEAD
     this.styleModal = { display: 'none' };
     this.selectedTodo = undefined;
+=======
+>>>>>>> 414e816745e53f7b1e8e7666b2bcdcca6a92ef73
   }
   closeModal(): void {
     this.styleModal = { display: 'none' };
