@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
 import { Todo } from "../../../shared/model/todo";
+import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 // @ViewChild('myModal') myModal;
 
 @Component({
@@ -46,10 +47,12 @@ export class TodoComponent implements OnInit {
 
   saveTitle(): void {
     console.log('Save success.');
-    console.log(this.selectedTodo)
+    console.log(this.selectedTodo);
+    this.styleModal = { display: 'none' };
+    this.selectedTodo = undefined;
   }
   closeModal(): void {
-    this.styleModal = { display: 'none' }
+    this.styleModal = { display: 'none' };
   }
   goBack(): void {
     this.location.back();
