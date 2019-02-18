@@ -30,7 +30,4 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.subscriptionUserList && this.subscriptionUserList.unsubscribe();
   }
 
-
-
-
 }
