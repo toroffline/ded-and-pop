@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Data } from '@angular/router';
-
-import { Todo } from '../../shared/model/todo'
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/shared/model/user';
+import { Todo } from '../../shared/model/todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient
+  ) { }
 
-  getTodo(id: number): Observable<Todo[]> {
-    let params = new HttpParams().set('userId', id.toString());
+  public getUserList(): Observable<User[]> {
+    const url = 'http://jsonplaceholder.typicode.com/users';
+    return this.http.get<User[]>(url);
+  }
+
+  public getUserListById(id: number): Observable<User[]> {
+    const url = `http://jsonplaceholder.typicode.com/users?id=${id}`;
+    return this.http.get<User[]>(url);
+  }
+
+  public getTodo(id: number): Observable<Todo[]> {
+    const params = new HttpParams().set('userId', id.toString());
     const url = `https://jsonplaceholder.typicode.com/todos`;
     return this.http.get<Todo[]>(url, { params: params });
   }
