@@ -1,21 +1,20 @@
 <h1>{{user?.name}}</h1>
 <div *ngFor="let item of user | keyvalue">
-    <!-- {{item.value.constructor.name}} -->
-    <b>{{item.key}} :</b>
-    <div class="nui" *ngIf="item.value.constructor.name !== 'Object'">{{item.value}}</div>
-    <div *ngIf="item.value.constructor.name === 'Object'">
-        <div class="nui" *ngFor=" let obj of item.value | keyvalue"><b>{{obj.key}} :</b>
-            <div class="nui" *ngIf="obj.value.constructor.name !=='Object'">{{obj.value}}</div>
-            <div class="nui" *ngIf="obj.value.constructor.name ==='Object'">
+  <!-- {{item.value.constructor.name}} -->
+  <b>{{item.key}} :</b>
+  <span class="nui" *ngIf="item.value.constructor.name !== 'Object'">{{item.value}}</span>
+  <div *ngIf="item.value.constructor.name === 'Object'">
+    <div class="nui" *ngFor=" let obj of item.value | keyvalue"><b>{{obj.key}} :</b>
+      <span class="nui" *ngIf="obj.value.constructor.name !=='Object'">{{obj.value}}</span>
+      <div class="nui" *ngIf="obj.value.constructor.name ==='Object'">
 
-                <div *ngFor="let obj2 of obj.value | keyvalue">
-                    <b class="nui">{{obj2.key}} :</b>
-                    <div class="nui">{{obj2.value}}
-                    </div>
-                </div>
-            </div>
+        <div class="nui" *ngFor="let obj2 of obj.value | keyvalue">
+          <b>{{obj2.key}} :</b>
+          <span class="nui">{{obj2.value}}</span>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<button><a [routerLink]="['/user/',id,'todo','detail']"> Todo</a> </button>
+<button class="w3-button w3-yellow"><a [routerLink]="['/user/',id,'todo','detail']"> Todo</a> </button>
