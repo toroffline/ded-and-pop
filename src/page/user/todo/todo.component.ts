@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
-import { Todo } from "../../../shared/model/todo";
+import { Todo } from '../../../shared/model/todo';
 // @ViewChild('myModal') myModal;
 
 @Component({
@@ -40,16 +40,16 @@ export class TodoComponent implements OnInit {
   editTitle(todo: Todo): void {
     // this.myModal.nativeElement.className = 'modal fade show';
     this.styleModal = { display: 'block' };
-    console.log({ todo })
+    console.log({ todo });
     this.selectedTodo = todo;
   }
 
   saveTitle(): void {
     console.log('Save success.');
-    console.log(this.selectedTodo)
+    console.log(this.selectedTodo);
   }
   closeModal(): void {
-    this.styleModal = { display: 'none' }
+    this.styleModal = { display: 'none' };
   }
   goBack(): void {
     this.location.back();
