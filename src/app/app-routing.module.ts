@@ -5,9 +5,10 @@ import { UserDetailComponent } from 'src/page/user/user-detail/user-detail.compo
 import { TodoComponent } from '../page/user/todo/todo.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'user/list', pathMatch: 'full' },
   { path: 'user/list', component: UserListComponent },
   { path: 'user/:id/todo/detail', component: TodoComponent },
-  { path: 'user/:id', component: UserDetailComponent},
+  { path: 'user/:id', component: UserDetailComponent },
 ];
 
 @NgModule({
@@ -16,7 +17,7 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 
- }
+}
 
 
 
