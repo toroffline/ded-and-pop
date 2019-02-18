@@ -52,11 +52,8 @@ export class TodoComponent implements OnInit {
   saveTitle(): void {
     console.log('Save success.');
     console.log(this.selectedTodo);
-<<<<<<< HEAD
     this.styleModal = { display: 'none' };
     this.selectedTodo = undefined;
-=======
->>>>>>> 414e816745e53f7b1e8e7666b2bcdcca6a92ef73
   }
   closeModal(): void {
     this.styleModal = { display: 'none' };
